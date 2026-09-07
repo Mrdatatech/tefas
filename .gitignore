@@ -1,0 +1,16 @@
+# Never upload the local database - Turso will be the real database going forward
+*.db
+tefas.db
+
+# Never upload secrets
+.env
+*.env
+
+# Python housekeeping junk
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Mac housekeeping junk
+.DS_Store
