@@ -80,26 +80,26 @@ def fetch_chunk(start_str, end_str):
 
 
 def save(records):
-    """Opens a fresh connection for each save — avoids the libSQL
-    'stream not found' error that happens when reusing a connection
-    across long-running operations."""
+    """Filters to genuinely new rows first, then writes in one transaction
+    with a fresh connection — avoids both the stale-stream bug and the
+    one-row-per-network-call slowness."""
+    if not records:
+        return 0
+
     con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
     con.sync()
 
-    rows = [
-        (r["fonKodu"], r["tarih"], r["fonUnvan"], r["fiyat"],
-         r.get("tedPaySayisi"), r.get("kisiSayisi"), r.get("portfoyBuyukluk"))
-        for r in records
-    ]
-    for row in rows:
+    con.execute("BEGIN")
+    for r in records:
         con.execute("""
             INSERT OR IGNORE INTO prices (code, date, title, price, shares, investors, aum)
             VALUES (?, ?, ?, ?, ?, ?, ?)
-        """, row)
+        """, (r["fonKodu"], r["tarih"], r["fonUnvan"], r["fiyat"],
+              r.get("tedPaySayisi"), r.get("kisiSayisi"), r.get("portfoyBuyukluk")))
     con.commit()
     con.sync()
     con.close()
-    return len(rows)
+    return len(records)
 
 
 def fetch_range(con, start, end):
