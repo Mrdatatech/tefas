@@ -1,20 +1,34 @@
 """
-TEFAS Update — handles both cold start and daily top-up.
-  - Empty table  → fetches full 5-year history (28-day chunks)
-  - Existing data → fetches only from latest date to today
-Prints "up to date" if nothing is needed.
+tefas_update.py — TEFAS fund price data updater (Turso cloud edition)
 
-Install: pip install requests
+Keeps the `prices` table in your Turso cloud database current for all
+TEFAS mutual funds: date, price (TRY), shares outstanding, investor
+count, and AUM.
+
+Behavior:
+  - Empty database  → fetches full 5-year history (in 28-day API chunks)
+  - Existing data    → fetches only from the last saved date to today
+  - Already current  → prints "up to date" and exits, no duplicate rows
+
+Connects to Turso via TURSO_DB_URL and TURSO_DB_TOKEN environment
+variables — never hardcode these, and never commit them to git.
+
+Data source: TEFAS public endpoint `fonGnlBlgSiraliGetir`.
+
+Install: pip install requests libsql-experimental
 Run:     python tefas_update.py
 """
 
+import os
 import time
-import sqlite3
+import libsql_experimental as libsql
 import requests
 from datetime import date, datetime, timedelta
-import os
 
-DB_FILE     = "tefas.db"
+TURSO_URL   = os.environ["TURSO_DB_URL"]
+TURSO_TOKEN = os.environ["TURSO_DB_TOKEN"]
+LOCAL_SHADOW = "tefas_local.db"
+
 YEARS       = 5
 CHUNK_DAYS  = 28
 MAX_RETRIES = 8
@@ -23,7 +37,8 @@ URL         = "https://www.tefas.gov.tr/api/funds/fonGnlBlgSiraliGetir"
 
 
 def get_connection():
-    con = sqlite3.connect(DB_FILE)
+    con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
+    con.sync()
     con.execute("""
         CREATE TABLE IF NOT EXISTS prices (
             code       TEXT,
@@ -37,6 +52,7 @@ def get_connection():
         )
     """)
     con.commit()
+    con.sync()
     return con
 
 
@@ -63,29 +79,37 @@ def fetch_chunk(start_str, end_str):
     return ([], False)
 
 
-def save(con, records):
+def save(records):
+    """Opens a fresh connection for each save — avoids the libSQL
+    'stream not found' error that happens when reusing a connection
+    across long-running operations."""
+    con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
+    con.sync()
+
     rows = [
         (r["fonKodu"], r["tarih"], r["fonUnvan"], r["fiyat"],
          r.get("tedPaySayisi"), r.get("kisiSayisi"), r.get("portfoyBuyukluk"))
         for r in records
     ]
-    con.executemany("""
-        INSERT OR IGNORE INTO prices (code, date, title, price, shares, investors, aum)
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-    """, rows)
+    for row in rows:
+        con.execute("""
+            INSERT OR IGNORE INTO prices (code, date, title, price, shares, investors, aum)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, row)
     con.commit()
+    con.sync()
+    con.close()
     return len(rows)
 
 
 def fetch_range(con, start, end):
-    """Fetch [start, end] in 28-day chunks. Returns total rows saved."""
     total = 0
     cs = start
     while cs <= end:
         ce = min(cs + timedelta(days=CHUNK_DAYS), end)
         records, ok = fetch_chunk(cs.strftime("%Y%m%d"), ce.strftime("%Y%m%d"))
         if ok:
-            n = save(con, records)
+            n = save(records)
             total += n
             print(f"  {cs} → {ce}: {n} rows")
         else:
@@ -98,18 +122,18 @@ def fetch_range(con, start, end):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 con   = get_connection()
+con.sync()   # force a fresh pull from cloud right before reading
 today = date.today()
 
-last = con.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+last = con.execute("SELECT MAX(date) FROM prices").fetchone()
+last = last[0] if last else None
 
 if last is None:
-    # Cold start — full 5-year history
     start = today - timedelta(days=YEARS * 365)
     print(f"prices: empty table — fetching full history {start} → {today}")
     total = fetch_range(con, start, today)
     print(f"prices: done, {total} rows added")
 else:
-    # Daily top-up
     last_date   = datetime.strptime(last, "%Y-%m-%d").date()
     fetch_start = last_date + timedelta(days=1)
     if fetch_start > today:
@@ -117,8 +141,8 @@ else:
     else:
         print(f"prices: updating {fetch_start} → {today}")
         total = fetch_range(con, fetch_start, today)
-        newest = con.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        check_con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
+        check_con.sync()
+        newest = check_con.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        check_con.close()
         print(f"prices: {total} rows added, latest now {newest}")
-
-con.close()
-
