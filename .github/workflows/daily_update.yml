@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests libsql-experimental
+        run: pip install requests pandas libsql-experimental
 
       - name: Run tefas_update.py
         working-directory: "Data Pipeline"
@@ -26,3 +26,10 @@ jobs:
           TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
           TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
         run: python tefas_update.py
+
+      - name: Run fx_update.py
+        working-directory: "Data Pipeline"
+        env:
+          TURSO_DB_URL: ${{ secrets.TURSO_DB_URL }}
+          TURSO_DB_TOKEN: ${{ secrets.TURSO_DB_TOKEN }}
+        run: python fx_update.py
