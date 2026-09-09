@@ -51,8 +51,14 @@ rows = con.execute("""
 """, (today_date, yesterday_date)).fetchall()
 con.close()
 
+# Exclude fund types that can't be bought by a regular retail investor,
+# or that are carry-trade vehicles riding temporary high interest rates
+EXCLUDE_TERMS = ["SERBEST", "ÖZEL"]
+
 by_code = {}
 for code, title, date, investors, aum in rows:
+    if any(term in title.upper() for term in EXCLUDE_TERMS):
+        continue
     by_code.setdefault(code, {})[date] = {
         "title": title, "investors": investors, "aum": aum
     }

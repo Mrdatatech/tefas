@@ -41,8 +41,7 @@ function renderPage(data) {
       <li class="mover-item">
         <div class="mover-top-row">
           <span class="mover-name">
-            <span class="mover-code">${item.code}</span>
-            <span class="mover-title">${item.title}</span>
+            <span class="mover-title">${item.code} (${item.title})</span>
           </span>
           <span class="mover-main-number">+${trNumber(item.change_M, 1)}M ₺</span>
         </div>
@@ -62,8 +61,7 @@ function renderPage(data) {
     <li class="mover-item">
       <div class="mover-top-row">
         <span class="mover-name">
-          <span class="mover-code">${item.code}</span>
-          <span class="mover-title">${item.title}</span>
+          <span class="mover-title">${item.code} (${item.title})</span>
         </span>
         <span class="mover-main-number">+${trNumber(item.change)}</span>
       </div>
