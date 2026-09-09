@@ -1,33 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEFAS Fund Flows</title>
+  <title>Para Akışı — TEFAS Fon Takibi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <main>
     <header>
-      <h1>Fund Flows</h1>
-      <p class="subtitle" id="date-range">Loading…</p>
+      <h1>Para Akışı</h1>
+      <p class="subtitle" id="date-range">Yükleniyor…</p>
     </header>
 
     <section class="movers">
-      <h2>Biggest investor increases</h2>
-      <p class="section-note">Funds gaining the most new investors, day over day.</p>
-      <ol id="investor-list" class="mover-list"></ol>
-    </section>
-
-    <section class="movers">
-      <h2>Biggest money inflows</h2>
-      <p class="section-note">Funds with the largest increase in assets under management (AUM), day over day.</p>
+      <h2>En büyük para girişleri</h2>
+      <p class="section-note">Bir önceki güne göre fon varlık değerinde (AUM) en çok artış olan fonlar. Sıralama gerçekleşen para miktarına göre yapılmıştır; çubuk uzunluğu ise fonun kendi büyüklüğüne göre değişim yüzdesini gösterir.</p>
       <ol id="aum-list" class="mover-list"></ol>
     </section>
 
+    <section class="movers">
+      <h2>Yatırımcı sayısı artışları</h2>
+      <p class="section-note">Bir önceki güne göre en çok yeni yatırımcı kazanan fonlar.</p>
+      <ol id="investor-list" class="mover-list"></ol>
+    </section>
+
     <footer>
-      <p>Data from TEFAS (Turkey Electronic Fund Trading Platform), updated daily. Not investment advice.</p>
+      <p>Veriler TEFAS'tan (Türkiye Elektronik Fon Alım Satım Platformu) alınmıştır, her gün güncellenir. Yatırım tavsiyesi değildir.</p>
     </footer>
   </main>
 
