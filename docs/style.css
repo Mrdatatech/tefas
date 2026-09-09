@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --paper: #F7F5F1;
+  --ink: #1A1D1E;
+  --ink-soft: #5B5F60;
+  --teal: #0F5C5C;
+  --green: #1D7A4C;
+  --red: #B23B3B;
+  --line: #DDD8CE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.5;
+}
+
+main {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+header {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+  color: var(--teal);
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.movers {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.6rem;
+}
+
+.section-note {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0.6rem 0 1.2rem;
+}
+
+.mover-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mover-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.mover-item:last-child {
+  border-bottom: none;
+}
+
+.mover-name {
+  min-width: 0;
+}
+
+.mover-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--teal);
+  display: block;
+}
+
+.mover-title {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mover-numbers {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.mover-change {
+  font-weight: 500;
+  color: var(--green);
+}
+
+.mover-total {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 0.1rem;
+}
+
+footer {
+  margin-top: 3rem;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.loading, .error {
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 1rem 0;
+}

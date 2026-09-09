@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEFAS Fund Flows</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main>
+    <header>
+      <h1>Fund Flows</h1>
+      <p class="subtitle" id="date-range">Loading…</p>
+    </header>
+
+    <section class="movers">
+      <h2>Biggest investor increases</h2>
+      <p class="section-note">Funds gaining the most new investors, day over day.</p>
+      <ol id="investor-list" class="mover-list"></ol>
+    </section>
+
+    <section class="movers">
+      <h2>Biggest money inflows</h2>
+      <p class="section-note">Funds with the largest increase in assets under management (AUM), day over day.</p>
+      <ol id="aum-list" class="mover-list"></ol>
+    </section>
+
+    <footer>
+      <p>Data from TEFAS (Turkey Electronic Fund Trading Platform), updated daily. Not investment advice.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
