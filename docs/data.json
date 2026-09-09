@@ -1,128 +1,128 @@
 {
-  "date": "2026-09-08",
-  "compared_to": "2026-09-07",
+  "date": "2026-09-09",
+  "compared_to": "2026-09-08",
   "top_investor_increases": [
-    {
-      "code": "ALE",
-      "title": "AK PORTFÖY PARA PİYASASI (TL) FONU",
-      "investors_now": 155217,
-      "change": 7004
-    },
     {
       "code": "THF",
       "title": "TERA PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN FON)",
-      "investors_now": 153956,
-      "change": 4574
-    },
-    {
-      "code": "GNP",
-      "title": "GARANTİ PORTFÖY NEMA PARA PİYASASI (TL) FONU",
-      "investors_now": 10264,
-      "change": 3778
-    },
-    {
-      "code": "NMP",
-      "title": "AK PORTFÖY NEMA PARA PİYASASI (TL) FONU",
-      "investors_now": 6988,
-      "change": 3636
-    },
-    {
-      "code": "YLB",
-      "title": "YAPI KREDİ PORTFÖY PARA PİYASASI FONU",
-      "investors_now": 361113,
-      "change": 1942
-    },
-    {
-      "code": "ENR",
-      "title": "QNB PORTFÖY ENPARA PARA PİYASASI (TL) FONU",
-      "investors_now": 15621,
-      "change": 1092
-    },
-    {
-      "code": "TTA",
-      "title": "İŞ PORTFÖY ALTIN FONU",
-      "investors_now": 224555,
-      "change": 1060
-    },
-    {
-      "code": "DOH",
-      "title": "TERA PORTFÖY DÖRDÜNCÜ HİSSE SENEDİ SERBEST (TL) FON (HİSSE SENEDİ YOĞUN FON)",
-      "investors_now": 24605,
-      "change": 1057
+      "investors_now": 163923,
+      "change": 9967
     },
     {
       "code": "TP2",
       "title": "TERA PORTFÖY PARA PİYASASI (TL) FONU",
-      "investors_now": 166103,
-      "change": 731
+      "investors_now": 168554,
+      "change": 2451
     },
     {
-      "code": "DCN",
-      "title": "DENİZ PORTFÖY ÜÇÜNCÜ PARA PİYASASI (TL) FONU",
-      "investors_now": 2568,
-      "change": 708
+      "code": "TTA",
+      "title": "İŞ PORTFÖY ALTIN FONU",
+      "investors_now": 226936,
+      "change": 2381
+    },
+    {
+      "code": "DOH",
+      "title": "TERA PORTFÖY DÖRDÜNCÜ HİSSE SENEDİ SERBEST (TL) FON (HİSSE SENEDİ YOĞUN FON)",
+      "investors_now": 26617,
+      "change": 2012
+    },
+    {
+      "code": "FSU",
+      "title": "TERA PORTFÖY FON SEPETİ FONU",
+      "investors_now": 7299,
+      "change": 831
+    },
+    {
+      "code": "TKM",
+      "title": "TEB PORTFÖY PARA PİYASASI (TL) FONU",
+      "investors_now": 502920,
+      "change": 694
+    },
+    {
+      "code": "TIV",
+      "title": "İŞ PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "investors_now": 124830,
+      "change": 682
+    },
+    {
+      "code": "YLB",
+      "title": "YAPI KREDİ PORTFÖY PARA PİYASASI FONU",
+      "investors_now": 361541,
+      "change": 428
+    },
+    {
+      "code": "GTL",
+      "title": "GARANTİ PORTFÖY BİRİNCİ PARA PİYASASI (TL) FONU",
+      "investors_now": 352899,
+      "change": 420
+    },
+    {
+      "code": "KLU",
+      "title": "KUVEYT TÜRK PORTFÖY PARA PİYASASI KATILIM (TL) FONU",
+      "investors_now": 108813,
+      "change": 375
     }
   ],
   "top_aum_increases": [
     {
-      "code": "GAL",
-      "title": "GARANTİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
-      "aum_now_M": 122681.7,
-      "change_M": 46065.3
-    },
-    {
-      "code": "YVD",
-      "title": "YAPI KREDİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
-      "aum_now_M": 71456.6,
-      "change_M": 23562.9
-    },
-    {
-      "code": "UCP",
-      "title": "AK PORTFÖY ÜÇÜNCÜ PARA PİYASASI SERBEST (TL) FON",
-      "aum_now_M": 46794.7,
-      "change_M": 12194.6
-    },
-    {
-      "code": "NKL",
-      "title": "AKTİF PORTFÖY KISA VADELİ SERBEST (TL) FON",
-      "aum_now_M": 27423.3,
-      "change_M": 11809.3
-    },
-    {
-      "code": "KSV",
-      "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KATILIM SERBEST (TL) FON",
-      "aum_now_M": 56493.0,
-      "change_M": 11799.9
-    },
-    {
-      "code": "KTV",
-      "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM (TL) FONU",
-      "aum_now_M": 38336.5,
-      "change_M": 8047.1
-    },
-    {
-      "code": "GSO",
-      "title": "GARANTİ PORTFÖY ÖPY SERBEST ÖZEL FON",
-      "aum_now_M": 35572.8,
-      "change_M": 7635.2
-    },
-    {
-      "code": "RTI",
-      "title": "ALBARAKA PORTFÖY ALBARAKA TÜRK İKİNCİ KISA VADELİ KATILIM SERBEST (TL) FON",
-      "aum_now_M": 56611.3,
-      "change_M": 7228.4
-    },
-    {
-      "code": "KVS",
-      "title": "AZİMUT PORTFÖY KISA VADELİ SERBEST (TL) FON",
-      "aum_now_M": 31677.7,
-      "change_M": 5015.8
+      "code": "YA1",
+      "title": "YAPI KREDİ PORTFÖY BİRİNCİ SERBEST FON",
+      "aum_now_M": 51627.9,
+      "change_M": 18359.3
     },
     {
       "code": "THF",
       "title": "TERA PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN FON)",
-      "aum_now_M": 97755.9,
-      "change_M": 4855.8
+      "aum_now_M": 109548.0,
+      "change_M": 11792.1
+    },
+    {
+      "code": "GAL",
+      "title": "GARANTİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 131525.7,
+      "change_M": 8844.0
+    },
+    {
+      "code": "TP2",
+      "title": "TERA PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 238479.0,
+      "change_M": 8611.2
+    },
+    {
+      "code": "GSO",
+      "title": "GARANTİ PORTFÖY ÖPY SERBEST ÖZEL FON",
+      "aum_now_M": 42114.5,
+      "change_M": 6541.7
+    },
+    {
+      "code": "TZL",
+      "title": "ZİRAAT PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 97701.9,
+      "change_M": 6395.3
+    },
+    {
+      "code": "TZV",
+      "title": "ZİRAAT PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "aum_now_M": 36767.7,
+      "change_M": 5527.3
+    },
+    {
+      "code": "KKT",
+      "title": "KUVEYT TÜRK PORTFÖY İKİNCİ KISA VADELİ KATILIM SERBEST (TL) FON",
+      "aum_now_M": 15979.6,
+      "change_M": 5189.8
+    },
+    {
+      "code": "NVT",
+      "title": "NEO PORTFÖY ÜÇÜNCÜ SERBEST (TL) FON",
+      "aum_now_M": 4890.0,
+      "change_M": 4448.0
+    },
+    {
+      "code": "TIV",
+      "title": "İŞ PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "aum_now_M": 32330.0,
+      "change_M": 3815.4
     }
   ]
 }
