@@ -11,6 +11,11 @@ function trPercent(n) {
   return `${sign}%${trNumber(n, 1)}`;
 }
 
+function trSignedInt(n) {
+  const sign = n >= 0 ? '+' : '';
+  return `${sign}${trNumber(n)}`;
+}
+
 async function loadData() {
   try {
     const response = await fetch('data.json?_=' + Date.now()); // cache-bust
@@ -49,27 +54,11 @@ function renderPage(data) {
           <div class="bar-fill" style="width: ${barWidth}%"></div>
         </div>
         <div class="mover-detail">
-          Toplam: ${trNumber(item.aum_now_M, 1)}M ₺ · Değişim: ${trPercent(item.change_pct || 0)} · Yatırımcı: ${trNumber(item.investors_now || 0)}
+          Toplam: ${trNumber(item.aum_now_M, 1)}M ₺ · Değişim: ${trPercent(item.change_pct || 0)} · Yatırımcı: ${trNumber(item.investors_now || 0)} (${trSignedInt(item.investors_change || 0)})
         </div>
       </li>
     `;
   }).join('');
-
-  // Investor section: sorted by absolute investor count change
-  const investorList = document.getElementById('investor-list');
-  investorList.innerHTML = data.top_investor_increases.map(item => `
-    <li class="mover-item">
-      <div class="mover-top-row">
-        <span class="mover-name">
-          <span class="mover-title">${item.code} (${item.title})</span>
-        </span>
-        <span class="mover-main-number">+${trNumber(item.change)}</span>
-      </div>
-      <div class="mover-detail">
-        Toplam yatırımcı: ${trNumber(item.investors_now)}
-      </div>
-    </li>
-  `).join('');
 }
 
 loadData();

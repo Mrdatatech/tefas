@@ -91,6 +91,7 @@ for code, days in by_code.items():
         "change_M": round(aum_change / 1e6, 1),
         "change_pct": round(aum_change_pct, 1),
         "investors_now": today["investors"],
+        "investors_change": inv_change,
     })
 
 top_aum = sorted(aum_changes, key=lambda x: x["change_M"], reverse=True)[:10]
