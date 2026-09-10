@@ -31,12 +31,15 @@ async function loadData() {
 }
 
 function renderMoverList(elementId, items, isNegative) {
-  const maxPct = Math.max(...items.map(i => Math.abs(i.change_pct || 0)), 1);
   const numberClass = isNegative ? 'mover-main-number negative' : 'mover-main-number';
   const barClass = isNegative ? 'bar-fill negative' : 'bar-fill';
 
   document.getElementById(elementId).innerHTML = items.map(item => {
-    const barWidth = Math.min(100, (Math.abs(item.change_pct || 0) / maxPct) * 100);
+    // Bar width = the fund's own percentage change directly (capped at 100%
+    // so extreme outliers don't overflow the bar) — NOT scaled relative to
+    // other funds in the list. A 40% change always draws a 40%-wide bar,
+    // consistent and comparable across different days.
+    const barWidth = Math.min(100, Math.abs(item.change_pct || 0));
     const changeText = isNegative
       ? `${trNumber(item.change_M, 1)}M ₺`
       : `+${trNumber(item.change_M, 1)}M ₺`;
