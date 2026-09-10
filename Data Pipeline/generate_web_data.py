@@ -74,12 +74,17 @@ for code, days in by_code.items():
     yest = days[yesterday_date]
     if today["investors"] is None or yest["investors"] is None:
         continue
+    # Skip funds with missing or non-positive AUM on either day — a null/zero
+    # AUM is a data gap, not a genuine 100% outflow, and would otherwise look
+    # like the fund lost all its assets overnight.
+    if not today["aum"] or not yest["aum"] or today["aum"] <= 0 or yest["aum"] <= 0:
+        continue
 
     inv_change = today["investors"] - yest["investors"]
-    today_aum = today["aum"] or 0
-    yest_aum = yest["aum"] or 0
+    today_aum = today["aum"]
+    yest_aum = yest["aum"]
     aum_change = today_aum - yest_aum
-    aum_change_pct = (aum_change / yest_aum * 100) if yest_aum > 0 else 0
+    aum_change_pct = (aum_change / yest_aum * 100)
 
     investor_changes.append({
         "code": code, "title": today["title"],
