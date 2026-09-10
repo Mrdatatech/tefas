@@ -1,9 +1,23 @@
 """
-tefas_update.py — TEFAS fund price data updater (Turso cloud edition)
+tefas_update.py — TEFAS fund price data updater (Turso remote-connection edition)
 
 Keeps the `prices` table in your Turso cloud database current for all
 TEFAS mutual funds: date, price (TRY), shares outstanding, investor
 count, and AUM.
+
+IMPORTANT — connection mode:
+This uses a REMOTE connection (the `libsql` package, connecting via
+database=<url>) — NOT the embedded-replica mode we used previously.
+The earlier version used libsql_experimental with sync_url + a local
+shadow file, which on GitHub Actions' fresh, disposable machines meant
+downloading the ENTIRE database from scratch on every single run just
+to build a local replica. That silently burned through Turso's free
+"bytes synced" and "rows read" quotas in days. The remote connection
+mode sends each query straight to the cloud over HTTP and only ever
+reads/writes the exact rows involved — no local file, no full-database
+sync, no quota blowup. It also eliminates the "stream not found" and
+stale-shadow-file bugs we hit under the old mode, since there's no
+local replica state to go stale.
 
 Behavior:
   - Empty database  → fetches full 5-year history (in 28-day API chunks)
@@ -15,19 +29,18 @@ variables — never hardcode these, and never commit them to git.
 
 Data source: TEFAS public endpoint `fonGnlBlgSiraliGetir`.
 
-Install: pip install requests libsql-experimental
+Install: pip install requests libsql
 Run:     python tefas_update.py
 """
 
 import os
 import time
-import libsql_experimental as libsql
+import libsql
 import requests
 from datetime import date, datetime, timedelta
 
 TURSO_URL   = os.environ["TURSO_DB_URL"]
 TURSO_TOKEN = os.environ["TURSO_DB_TOKEN"]
-LOCAL_SHADOW = "tefas_local.db"
 
 YEARS       = 5
 CHUNK_DAYS  = 28
@@ -37,8 +50,9 @@ URL         = "https://www.tefas.gov.tr/api/funds/fonGnlBlgSiraliGetir"
 
 
 def get_connection():
-    con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
-    con.sync()
+    """One remote connection, reused for the whole script run.
+    No local file, no sync — every call goes straight to the cloud."""
+    con = libsql.connect(database=TURSO_URL, auth_token=TURSO_TOKEN)
     con.execute("""
         CREATE TABLE IF NOT EXISTS prices (
             code       TEXT,
@@ -52,7 +66,6 @@ def get_connection():
         )
     """)
     con.commit()
-    con.sync()
     return con
 
 
@@ -79,15 +92,11 @@ def fetch_chunk(start_str, end_str):
     return ([], False)
 
 
-def save(records):
-    """Filters to genuinely new rows first, then writes in one transaction
-    with a fresh connection — avoids both the stale-stream bug and the
-    one-row-per-network-call slowness."""
+def save(con, records):
+    """Writes using the SAME connection passed in — no new connection,
+    no sync, per chunk. Batched in one transaction."""
     if not records:
         return 0
-
-    con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
-    con.sync()
 
     con.execute("BEGIN")
     for r in records:
@@ -97,8 +106,6 @@ def save(records):
         """, (r["fonKodu"], r["tarih"], r["fonUnvan"], r["fiyat"],
               r.get("tedPaySayisi"), r.get("kisiSayisi"), r.get("portfoyBuyukluk")))
     con.commit()
-    con.sync()
-    con.close()
     return len(records)
 
 
@@ -109,7 +116,7 @@ def fetch_range(con, start, end):
         ce = min(cs + timedelta(days=CHUNK_DAYS), end)
         records, ok = fetch_chunk(cs.strftime("%Y%m%d"), ce.strftime("%Y%m%d"))
         if ok:
-            n = save(records)
+            n = save(con, records)
             total += n
             print(f"  {cs} → {ce}: {n} rows")
         else:
@@ -122,7 +129,6 @@ def fetch_range(con, start, end):
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 con   = get_connection()
-con.sync()   # force a fresh pull from cloud right before reading
 today = date.today()
 
 last = con.execute("SELECT MAX(date) FROM prices").fetchone()
@@ -141,8 +147,7 @@ else:
     else:
         print(f"prices: updating {fetch_start} → {today}")
         total = fetch_range(con, fetch_start, today)
-        check_con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
-        check_con.sync()
-        newest = check_con.execute("SELECT MAX(date) FROM prices").fetchone()[0]
-        check_con.close()
+        newest = con.execute("SELECT MAX(date) FROM prices").fetchone()[0]
         print(f"prices: {total} rows added, latest now {newest}")
+
+con.close()

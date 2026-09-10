@@ -1,6 +1,11 @@
 """
 generate_web_data.py — Computes daily top movers and writes data.json
-for the webpage to display.
+for the webpage to display (Turso remote-connection edition).
+
+Uses a REMOTE connection (the `libsql` package, database=<url>) — no
+local shadow file, no sync_url, no .sync(). One connection is opened
+once and reused for the whole script run. See tefas_update.py's
+docstring for why this replaced the old embedded-replica pattern.
 
 Finds the two most recent dates in the database, compares every fund's
 investor count and AUM between them, and outputs:
@@ -10,32 +15,32 @@ investor count and AUM between them, and outputs:
     while keeping the list order tied to actual money flow.
   - top_investor_increases: sorted by absolute investor count change.
 
-Install: pip install libsql-experimental
+Excludes Serbest (unrestricted) and Özel (private) funds — these can't
+be bought by a regular retail investor, so they shouldn't occupy a
+leaderboard slot regardless of how big their move is.
+
+Install: pip install libsql
 Run:     python generate_web_data.py [--output path/to/data.json]
 """
 
 import os
 import json
 import argparse
-import libsql_experimental as libsql
+import libsql
 
-TURSO_URL    = os.environ["TURSO_DB_URL"]
-TURSO_TOKEN  = os.environ["TURSO_DB_TOKEN"]
-LOCAL_SHADOW = "web_data_local.db"
+TURSO_URL   = os.environ["TURSO_DB_URL"]
+TURSO_TOKEN = os.environ["TURSO_DB_TOKEN"]
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--output", default="data.json", help="Path to write the JSON output")
 args = parser.parse_args()
 OUTPUT_FILE = args.output
 
-
-def fresh_connection():
-    con = libsql.connect(LOCAL_SHADOW, sync_url=TURSO_URL, auth_token=TURSO_TOKEN)
-    con.sync()
-    return con
+# Fund types that can't be bought by a regular retail investor
+EXCLUDE_TERMS = ["SERBEST", "ÖZEL"]
 
 
-con = fresh_connection()
+con = libsql.connect(database=TURSO_URL, auth_token=TURSO_TOKEN)
 
 dates = con.execute("SELECT DISTINCT date FROM prices ORDER BY date DESC LIMIT 2").fetchall()
 if len(dates) < 2:
@@ -50,10 +55,6 @@ rows = con.execute("""
     WHERE date IN (?, ?)
 """, (today_date, yesterday_date)).fetchall()
 con.close()
-
-# Exclude fund types that can't be bought by a regular retail investor,
-# or that are carry-trade vehicles riding temporary high interest rates
-EXCLUDE_TERMS = ["SERBEST", "ÖZEL"]
 
 by_code = {}
 for code, title, date, investors, aum in rows:
@@ -92,10 +93,7 @@ for code, days in by_code.items():
         "investors_now": today["investors"],
     })
 
-# AUM list: ranked by absolute TL change (real money moved) — the priority metric
 top_aum = sorted(aum_changes, key=lambda x: x["change_M"], reverse=True)[:10]
-
-# Investor list: ranked by absolute investor count change
 top_investors = sorted(investor_changes, key=lambda x: x["change"], reverse=True)[:10]
 
 output = {
