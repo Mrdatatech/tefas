@@ -95,12 +95,14 @@ for code, days in by_code.items():
     })
 
 top_aum = sorted(aum_changes, key=lambda x: x["change_M"], reverse=True)[:10]
+top_aum_decreases = sorted(aum_changes, key=lambda x: x["change_M"])[:10]
 top_investors = sorted(investor_changes, key=lambda x: x["change"], reverse=True)[:10]
 
 output = {
     "date": today_date,
     "compared_to": yesterday_date,
     "top_aum_increases": top_aum,
+    "top_aum_decreases": top_aum_decreases,
     "top_investor_increases": top_investors,
 }
 

@@ -24,9 +24,22 @@ body {
 }
 
 main {
-  max-width: 720px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 3rem 1.5rem 4rem;
+}
+
+.movers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 800px) {
+  .movers-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
 
 header {
@@ -117,6 +130,14 @@ h2 {
   color: var(--green);
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.mover-main-number.negative {
+  color: var(--red);
+}
+
+.bar-fill.negative {
+  background: var(--red);
 }
 
 .bar-track {

@@ -30,28 +30,26 @@ async function loadData() {
   }
 }
 
-function renderPage(data) {
-  document.getElementById('date-range').textContent =
-    `${data.compared_to} → ${data.date}`;
+function renderMoverList(elementId, items, isNegative) {
+  const maxPct = Math.max(...items.map(i => Math.abs(i.change_pct || 0)), 1);
+  const numberClass = isNegative ? 'mover-main-number negative' : 'mover-main-number';
+  const barClass = isNegative ? 'bar-fill negative' : 'bar-fill';
 
-  // AUM section: sorted by absolute TL change (already sorted server-side),
-  // bar length driven by percentage change relative to the max in this list
-  const aumItems = data.top_aum_increases;
-  const maxPct = Math.max(...aumItems.map(i => Math.abs(i.change_pct || 0)), 1);
-
-  const aumList = document.getElementById('aum-list');
-  aumList.innerHTML = aumItems.map(item => {
+  document.getElementById(elementId).innerHTML = items.map(item => {
     const barWidth = Math.min(100, (Math.abs(item.change_pct || 0) / maxPct) * 100);
+    const changeText = isNegative
+      ? `${trNumber(item.change_M, 1)}M ₺`
+      : `+${trNumber(item.change_M, 1)}M ₺`;
     return `
       <li class="mover-item">
         <div class="mover-top-row">
           <span class="mover-name">
             <span class="mover-title">${item.code} (${item.title})</span>
           </span>
-          <span class="mover-main-number">+${trNumber(item.change_M, 1)}M ₺</span>
+          <span class="${numberClass}">${changeText}</span>
         </div>
         <div class="bar-track">
-          <div class="bar-fill" style="width: ${barWidth}%"></div>
+          <div class="${barClass}" style="width: ${barWidth}%"></div>
         </div>
         <div class="mover-detail">
           Toplam: ${trNumber(item.aum_now_M, 1)}M ₺ · Değişim: ${trPercent(item.change_pct || 0)} · Yatırımcı: ${trNumber(item.investors_now || 0)} (${trSignedInt(item.investors_change || 0)})
@@ -59,6 +57,14 @@ function renderPage(data) {
       </li>
     `;
   }).join('');
+}
+
+function renderPage(data) {
+  document.getElementById('date-range').textContent =
+    `${data.compared_to} → ${data.date}`;
+
+  renderMoverList('aum-list', data.top_aum_increases, false);
+  renderMoverList('aum-decrease-list', data.top_aum_decreases, true);
 }
 
 loadData();

@@ -93,6 +93,98 @@
       "investors_change": 245
     }
   ],
+  "top_aum_decreases": [
+    {
+      "code": "KLU",
+      "title": "KUVEYT TÜRK PORTFÖY PARA PİYASASI KATILIM (TL) FONU",
+      "aum_now_M": 0.0,
+      "change_M": -91850.3,
+      "change_pct": -100.0,
+      "investors_now": 108800,
+      "investors_change": -13
+    },
+    {
+      "code": "KZL",
+      "title": "KUVEYT TÜRK PORTFÖY ALTIN KATILIM FONU",
+      "aum_now_M": 0.0,
+      "change_M": -89663.6,
+      "change_pct": -100.0,
+      "investors_now": 65730,
+      "investors_change": 5
+    },
+    {
+      "code": "PRY",
+      "title": "PUSULA PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 0.0,
+      "change_M": -61548.6,
+      "change_pct": -100.0,
+      "investors_now": 41145,
+      "investors_change": -3421
+    },
+    {
+      "code": "KTV",
+      "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM (TL) FONU",
+      "aum_now_M": 0.0,
+      "change_M": -39767.1,
+      "change_pct": -100.0,
+      "investors_now": 47078,
+      "investors_change": -46
+    },
+    {
+      "code": "KHP",
+      "title": "KUVEYT TÜRK PORTFÖY PAYLAŞIMLI HESAP PARA PİYASASI KATILIM FONU",
+      "aum_now_M": 0.0,
+      "change_M": -22377.0,
+      "change_pct": -100.0,
+      "investors_now": 1428,
+      "investors_change": -22
+    },
+    {
+      "code": "PNU",
+      "title": "PUSULA PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 0.0,
+      "change_M": -21242.8,
+      "change_pct": -100.0,
+      "investors_now": 20814,
+      "investors_change": -1038
+    },
+    {
+      "code": "GAL",
+      "title": "GARANTİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 117466.8,
+      "change_M": -14058.9,
+      "change_pct": -10.7,
+      "investors_now": 59594,
+      "investors_change": -18
+    },
+    {
+      "code": "GTZ",
+      "title": "GARANTİ PORTFÖY GÜMÜŞ FON SEPETİ FONU",
+      "aum_now_M": 0.0,
+      "change_M": -12680.3,
+      "change_pct": -100.0,
+      "investors_now": 61769,
+      "investors_change": -76
+    },
+    {
+      "code": "YZG",
+      "title": "YAPI KREDİ PORTFÖY GÜMÜŞ FON SEPETİ FONU",
+      "aum_now_M": 0.0,
+      "change_M": -11006.4,
+      "change_pct": -100.0,
+      "investors_now": 60092,
+      "investors_change": 19
+    },
+    {
+      "code": "KUT",
+      "title": "KUVEYT TÜRK PORTFÖY KIYMETLİ MADENLER KATILIM FONU",
+      "aum_now_M": 0.0,
+      "change_M": -7942.6,
+      "change_pct": -100.0,
+      "investors_now": 40950,
+      "investors_change": -76
+    }
+  ],
   "top_investor_increases": [
     {
       "code": "THF",
