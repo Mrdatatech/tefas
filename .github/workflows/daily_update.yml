@@ -20,7 +20,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests pandas libsql-experimental
+        run: pip install requests pandas libsql
 
       - name: Run tefas_update.py
         working-directory: "Data Pipeline"
