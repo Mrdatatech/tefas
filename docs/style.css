@@ -26,7 +26,7 @@ body {
 main {
   max-width: 1080px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: 1.5rem 1.5rem 4rem;
 }
 
 .movers-grid {
@@ -43,21 +43,23 @@ main {
 }
 
 header {
-  margin-bottom: 3rem;
+  display: block;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 2.25rem;
-  font-weight: 600;
-  margin: 0 0 0.4rem;
-  color: var(--teal);
-}
-
-.subtitle {
+.logo-triangle {
+  width: 22px;
+  height: 20px;
+  display: block;
   margin: 0;
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-  font-family: 'JetBrains Mono', monospace;
+}
+
+.logo-triangle polygon {
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 5;
+  stroke-linejoin: round;
 }
 
 .movers {
