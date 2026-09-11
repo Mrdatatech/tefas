@@ -23,7 +23,6 @@ async function loadData() {
     const data = await response.json();
     renderPage(data);
   } catch (err) {
-    document.getElementById('date-range').textContent = 'Veri şu anda kullanılamıyor';
     document.getElementById('aum-list').innerHTML =
       '<li class="error">Fon verileri yüklenemedi. Lütfen daha sonra tekrar deneyin.</li>';
     console.error(err);
@@ -63,9 +62,6 @@ function renderMoverList(elementId, items, isNegative) {
 }
 
 function renderPage(data) {
-  document.getElementById('date-range').textContent =
-    `${data.compared_to} → ${data.date}`;
-
   renderMoverList('aum-list', data.top_aum_increases, false);
   renderMoverList('aum-decrease-list', data.top_aum_decreases, true);
 }
