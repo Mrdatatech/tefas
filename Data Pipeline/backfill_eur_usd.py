@@ -44,13 +44,6 @@ if "price_usd" not in existing_cols:
     con.execute("ALTER TABLE prices ADD COLUMN price_usd REAL")
 con.commit()
 
-con.execute("""
-    CREATE TEMP TABLE IF NOT EXISTS tmp_eur_usd (
-        code TEXT, date TEXT, price_eur REAL, price_usd REAL,
-        PRIMARY KEY (code, date)
-    )
-""")
-
 # ── Step 2: find only the rows still needing conversion ─────────────────────
 
 print("Finding rows still needing conversion...")
@@ -81,7 +74,11 @@ merged = remaining_df.merge(fx_ff, on="date", how="left")
 merged["price_eur"] = (merged["price"] / merged["eur_try"]).round(6)
 merged["price_usd"] = (merged["price"] / merged["usd_try"]).round(6)
 
-# ── Step 4: write back in fast batches via temp table + UPDATE...FROM ──────
+# ── Step 4: write back in fast batches using upsert (no temp table needed) ──
+# INSERT ... ON CONFLICT DO UPDATE: since every (code, date) already exists
+# (these are all pre-existing rows), the INSERT part never actually inserts —
+# it always hits the PRIMARY KEY conflict and runs the UPDATE instead, only
+# touching price_eur/price_usd, leaving every other column untouched.
 
 rows_to_write = list(zip(
     merged["code"].tolist(),
@@ -97,23 +94,16 @@ start_time = time.time()
 for batch_num, i in enumerate(range(0, len(rows_to_write), BATCH_SIZE), 1):
     batch = rows_to_write[i:i + BATCH_SIZE]
 
-    con.execute("DELETE FROM tmp_eur_usd")
-
     placeholders = ",".join(["(?,?,?,?)"] * len(batch))
     flat_params = [v for row in batch for v in row]
-    con.execute(
-        f"INSERT INTO tmp_eur_usd (code, date, price_eur, price_usd) VALUES {placeholders}",
-        flat_params
-    )
 
-    con.execute("""
-        UPDATE prices
-        SET price_eur = (SELECT price_eur FROM tmp_eur_usd t
-                          WHERE t.code = prices.code AND t.date = prices.date),
-            price_usd = (SELECT price_usd FROM tmp_eur_usd t
-                          WHERE t.code = prices.code AND t.date = prices.date)
-        WHERE (code, date) IN (SELECT code, date FROM tmp_eur_usd)
-    """)
+    con.execute(f"""
+        INSERT INTO prices (code, date, price_eur, price_usd)
+        VALUES {placeholders}
+        ON CONFLICT(code, date) DO UPDATE SET
+            price_eur = excluded.price_eur,
+            price_usd = excluded.price_usd
+    """, flat_params)
     con.commit()
 
     if batch_num % 20 == 0 or batch_num == total_batches:
@@ -122,9 +112,6 @@ for batch_num, i in enumerate(range(0, len(rows_to_write), BATCH_SIZE), 1):
         rate = done / elapsed if elapsed > 0 else 0
         print(f"  batch {batch_num}/{total_batches} — {done}/{len(rows_to_write)} rows"
               f" ({rate:.0f} rows/sec)")
-
-con.execute("DELETE FROM tmp_eur_usd")
-con.commit()
 
 # ── Step 5: verify ───────────────────────────────────────────────────────────
 
