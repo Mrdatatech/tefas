@@ -66,4 +66,39 @@ function renderPage(data) {
   renderMoverList('aum-decrease-list', data.top_aum_decreases, true);
 }
 
+async function loadKratio() {
+  try {
+    const response = await fetch('kratio.json?_=' + Date.now());
+    if (!response.ok) throw new Error('kratio.json bulunamadı');
+    const funds = await response.json();
+    renderKratioTable(funds);
+  } catch (err) {
+    document.getElementById('kratio-tbody').innerHTML =
+      '<tr><td colspan="4" class="error">Veri yüklenemedi.</td></tr>';
+    console.error(err);
+  }
+}
+
+function renderKratioTable(funds) {
+  document.getElementById('kratio-tbody').innerHTML = funds.map(f => {
+    let currentCell;
+    if (f.current_year && f.current_year.k_ratio !== null) {
+      const cls = f.current_year.k_ratio >= 0 ? 'kratio-good' : 'kratio-bad';
+      currentCell = `<span class="${cls}">K=${f.current_year.k_ratio} (${trPercent(f.current_year.return_pct)})</span>`;
+    } else {
+      currentCell = '<span class="kratio-neutral">Veri yok</span>';
+    }
+
+    return `
+      <tr>
+        <td class="fund-name">${f.code} (${f.title})</td>
+        <td>${trNumber(f.avg_k_ratio, 2)}</td>
+        <td>${f.completed_years}</td>
+        <td>${currentCell}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
 loadData();
+loadKratio();

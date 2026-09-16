@@ -177,3 +177,48 @@ footer {
   font-style: italic;
   padding: 1rem 0;
 }
+
+.kratio-section {
+  grid-column: 1 / -1;
+}
+
+.kratio-table-wrap {
+  max-height: 480px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+.kratio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.kratio-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  text-align: left;
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid var(--line);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-weight: 600;
+}
+
+.kratio-table td {
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.kratio-table td.fund-name {
+  font-family: 'Source Serif 4', Georgia, serif;
+  white-space: normal;
+  max-width: 320px;
+}
+
+.kratio-good { color: var(--green); font-weight: 500; }
+.kratio-bad { color: var(--red); font-weight: 500; }
+.kratio-neutral { color: var(--ink-soft); }
