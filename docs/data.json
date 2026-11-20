@@ -1,250 +1,250 @@
 {
-  "date": "2026-11-19",
-  "compared_to": "2026-11-18",
+  "date": "2026-11-20",
+  "compared_to": "2026-11-19",
   "top_aum_increases": [
-    {
-      "code": "GAL",
-      "title": "GARANTİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
-      "aum_now_M": 82353.1,
-      "change_M": 14220.7,
-      "change_pct": 20.9,
-      "investors_now": 58845,
-      "investors_change": 81
-    },
-    {
-      "code": "GTL",
-      "title": "GARANTİ PORTFÖY BİRİNCİ PARA PİYASASI (TL) FONU",
-      "aum_now_M": 185371.7,
-      "change_M": 4820.4,
-      "change_pct": 2.7,
-      "investors_now": 358788,
-      "investors_change": 50
-    },
-    {
-      "code": "TI1",
-      "title": "İŞ PORTFÖY PARA PİYASASI (TL) FONU",
-      "aum_now_M": 229393.4,
-      "change_M": 2356.4,
-      "change_pct": 1.0,
-      "investors_now": 240685,
-      "investors_change": -61
-    },
-    {
-      "code": "PPI",
-      "title": "YAPI KREDİ PORTFÖY ÜÇÜNCÜ PARA PİYASASI (TL) FONU",
-      "aum_now_M": 7234.9,
-      "change_M": 1307.5,
-      "change_pct": 22.1,
-      "investors_now": 4925,
-      "investors_change": 55
-    },
-    {
-      "code": "VK6",
-      "title": "V PORTFÖY VAKIFBANK PARA PİYASASI (TL) FONU",
-      "aum_now_M": 81236.3,
-      "change_M": 994.5,
-      "change_pct": 1.2,
-      "investors_now": 162366,
-      "investors_change": -79
-    },
-    {
-      "code": "TKM",
-      "title": "TEB PORTFÖY PARA PİYASASI (TL) FONU",
-      "aum_now_M": 76840.6,
-      "change_M": 831.5,
-      "change_pct": 1.1,
-      "investors_now": 507280,
-      "investors_change": 169
-    },
-    {
-      "code": "HLL",
-      "title": "ZİRAAT PORTFÖY HALKBANK PARA PİYASASI (TL) FONU",
-      "aum_now_M": 52109.1,
-      "change_M": 800.4,
-      "change_pct": 1.6,
-      "investors_now": 1024774,
-      "investors_change": -835
-    },
-    {
-      "code": "TZL",
-      "title": "ZİRAAT PORTFÖY PARA PİYASASI (TL) FONU",
-      "aum_now_M": 92978.5,
-      "change_M": 659.7,
-      "change_pct": 0.7,
-      "investors_now": 187406,
-      "investors_change": -14
-    },
-    {
-      "code": "YLB",
-      "title": "YAPI KREDİ PORTFÖY PARA PİYASASI FONU",
-      "aum_now_M": 113987.7,
-      "change_M": 635.8,
-      "change_pct": 0.6,
-      "investors_now": 370830,
-      "investors_change": -37
-    },
-    {
-      "code": "KTV",
-      "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM (TL) FONU",
-      "aum_now_M": 40271.8,
-      "change_M": 625.9,
-      "change_pct": 1.6,
-      "investors_now": 51385,
-      "investors_change": 188
-    }
-  ],
-  "top_aum_decreases": [
-    {
-      "code": "KZL",
-      "title": "KUVEYT TÜRK PORTFÖY ALTIN KATILIM FONU",
-      "aum_now_M": 69635.3,
-      "change_M": -1757.7,
-      "change_pct": -2.5,
-      "investors_now": 59274,
-      "investors_change": -90
-    },
-    {
-      "code": "KHP",
-      "title": "KUVEYT TÜRK PORTFÖY PAYLAŞIMLI HESAP PARA PİYASASI KATILIM FONU",
-      "aum_now_M": 13260.3,
-      "change_M": -1220.8,
-      "change_pct": -8.4,
-      "investors_now": 932,
-      "investors_change": -45
-    },
-    {
-      "code": "OJK",
-      "title": "QNB PORTFÖY ALTIN FONU",
-      "aum_now_M": 40748.7,
-      "change_M": -888.1,
-      "change_pct": -2.1,
-      "investors_now": 25835,
-      "investors_change": -31
-    },
-    {
-      "code": "YKT",
-      "title": "YAPI KREDİ PORTFÖY ALTIN FONU",
-      "aum_now_M": 27818.0,
-      "change_M": -597.8,
-      "change_pct": -2.1,
-      "investors_now": 80693,
-      "investors_change": -75
-    },
-    {
-      "code": "GTA",
-      "title": "GARANTİ PORTFÖY ALTIN FONU",
-      "aum_now_M": 21328.6,
-      "change_M": -443.5,
-      "change_pct": -2.0,
-      "investors_now": 70081,
-      "investors_change": -61
-    },
-    {
-      "code": "TTA",
-      "title": "İŞ PORTFÖY ALTIN FONU",
-      "aum_now_M": 22864.8,
-      "change_M": -411.9,
-      "change_pct": -1.8,
-      "investors_now": 225350,
-      "investors_change": -112
-    },
-    {
-      "code": "ZPK",
-      "title": "ZİRAAT PORTFÖY KISA VADELİ KİRA SERTİFİKASI KATILIM (TL) FONU",
-      "aum_now_M": 28338.8,
-      "change_M": -369.0,
-      "change_pct": -1.3,
-      "investors_now": 31922,
-      "investors_change": 15
-    },
-    {
-      "code": "GTZ",
-      "title": "GARANTİ PORTFÖY GÜMÜŞ FON SEPETİ FONU",
-      "aum_now_M": 8634.4,
-      "change_M": -354.2,
-      "change_pct": -3.9,
-      "investors_now": 55510,
-      "investors_change": -43
-    },
-    {
-      "code": "AFO",
-      "title": "AK PORTFÖY ALTIN FONU",
-      "aum_now_M": 16521.9,
-      "change_M": -348.4,
-      "change_pct": -2.1,
-      "investors_now": 76298,
-      "investors_change": -78
-    },
-    {
-      "code": "YZG",
-      "title": "YAPI KREDİ PORTFÖY GÜMÜŞ FON SEPETİ FONU",
-      "aum_now_M": 7317.0,
-      "change_M": -276.8,
-      "change_pct": -3.6,
-      "investors_now": 53840,
-      "investors_change": -122
-    }
-  ],
-  "top_investor_increases": [
     {
       "code": "ZBJ",
       "title": "ZİRAAT PORTFÖY BAŞAK PARA PİYASASI (TL) FONU",
-      "investors_now": 37329,
-      "change": 235
+      "aum_now_M": 64568.3,
+      "change_M": 2795.3,
+      "change_pct": 4.5,
+      "investors_now": 37496,
+      "investors_change": 167
+    },
+    {
+      "code": "BGP",
+      "title": "AK PORTFÖY ÜÇÜNCÜ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 76230.1,
+      "change_M": 1451.3,
+      "change_pct": 1.9,
+      "investors_now": 31751,
+      "investors_change": 102
+    },
+    {
+      "code": "YVD",
+      "title": "YAPI KREDİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 47551.1,
+      "change_M": 1301.7,
+      "change_pct": 2.8,
+      "investors_now": 82205,
+      "investors_change": 59
+    },
+    {
+      "code": "AVT",
+      "title": "AK PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "aum_now_M": 5607.2,
+      "change_M": 508.7,
+      "change_pct": 10.0,
+      "investors_now": 20478,
+      "investors_change": 9
     },
     {
       "code": "KTV",
       "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM (TL) FONU",
-      "investors_now": 51385,
-      "change": 188
+      "aum_now_M": 40633.3,
+      "change_M": 361.6,
+      "change_pct": 0.9,
+      "investors_now": 51479,
+      "investors_change": 94
     },
     {
-      "code": "TKM",
-      "title": "TEB PORTFÖY PARA PİYASASI (TL) FONU",
-      "investors_now": 507280,
-      "change": 169
+      "code": "AFT",
+      "title": "AK PORTFÖY YENİ TEKNOLOJİLER YABANCI HİSSE SENEDİ FONU",
+      "aum_now_M": 14067.0,
+      "change_M": 321.5,
+      "change_pct": 2.3,
+      "investors_now": 124384,
+      "investors_change": -259
+    },
+    {
+      "code": "YAY",
+      "title": "YAPI KREDİ PORTFÖY YABANCI TEKNOLOJİ SEKTÖRÜ HİSSE SENEDİ FONU",
+      "aum_now_M": 10926.6,
+      "change_M": 300.2,
+      "change_pct": 2.8,
+      "investors_now": 39211,
+      "investors_change": -95
+    },
+    {
+      "code": "VKV",
+      "title": "VAKIF KATILIM PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM FONU",
+      "aum_now_M": 2841.2,
+      "change_M": 211.7,
+      "change_pct": 8.1,
+      "investors_now": 1317,
+      "investors_change": 6
+    },
+    {
+      "code": "FI5",
+      "title": "QNB PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 115924.5,
+      "change_M": 176.1,
+      "change_pct": 0.2,
+      "investors_now": 52769,
+      "investors_change": -21
     },
     {
       "code": "AIS",
       "title": "AK PORTFÖY PARA PİYASASI KATILIM FONU",
-      "investors_now": 30618,
-      "change": 164
+      "aum_now_M": 10101.8,
+      "change_M": 168.4,
+      "change_pct": 1.7,
+      "investors_now": 30721,
+      "investors_change": 103
+    }
+  ],
+  "top_aum_decreases": [
+    {
+      "code": "ALE",
+      "title": "AK PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 83628.5,
+      "change_M": -13294.0,
+      "change_pct": -13.7,
+      "investors_now": 144439,
+      "investors_change": 96
     },
     {
-      "code": "TIV",
-      "title": "İŞ PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
-      "investors_now": 122396,
-      "change": 164
+      "code": "TI1",
+      "title": "İŞ PORTFÖY PARA PİYASASI (TL) FONU",
+      "aum_now_M": 223969.5,
+      "change_M": -5423.9,
+      "change_pct": -2.4,
+      "investors_now": 240504,
+      "investors_change": -181
+    },
+    {
+      "code": "YLB",
+      "title": "YAPI KREDİ PORTFÖY PARA PİYASASI FONU",
+      "aum_now_M": 108711.1,
+      "change_M": -5276.6,
+      "change_pct": -4.6,
+      "investors_now": 370971,
+      "investors_change": 141
+    },
+    {
+      "code": "KHP",
+      "title": "KUVEYT TÜRK PORTFÖY PAYLAŞIMLI HESAP PARA PİYASASI KATILIM FONU",
+      "aum_now_M": 8484.0,
+      "change_M": -4776.2,
+      "change_pct": -36.0,
+      "investors_now": 618,
+      "investors_change": -314
     },
     {
       "code": "DLY",
       "title": "DENİZ PORTFÖY PARA PİYASASI (TL) FONU",
-      "investors_now": 302572,
-      "change": 157
-    },
-    {
-      "code": "AFS",
-      "title": "AK PORTFÖY SAĞLIK SEKTÖRÜ YABANCI HİSSE SENEDİ FONU",
-      "investors_now": 30581,
-      "change": 112
-    },
-    {
-      "code": "BRR",
-      "title": "AK PORTFÖY İKİNCİ KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
-      "investors_now": 2298,
-      "change": 89
-    },
-    {
-      "code": "GPN",
-      "title": "GARANTİ PORTFÖY PARA PİYASASI KATILIM (TL) FONU",
-      "investors_now": 8892,
-      "change": 83
+      "aum_now_M": 66491.3,
+      "change_M": -4580.1,
+      "change_pct": -6.4,
+      "investors_now": 302456,
+      "investors_change": -116
     },
     {
       "code": "GAL",
       "title": "GARANTİ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
-      "investors_now": 58845,
-      "change": 81
+      "aum_now_M": 80565.2,
+      "change_M": -1787.9,
+      "change_pct": -2.2,
+      "investors_now": 58867,
+      "investors_change": 22
+    },
+    {
+      "code": "GTL",
+      "title": "GARANTİ PORTFÖY BİRİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 183854.1,
+      "change_M": -1517.6,
+      "change_pct": -0.8,
+      "investors_now": 359152,
+      "investors_change": 364
+    },
+    {
+      "code": "PPI",
+      "title": "YAPI KREDİ PORTFÖY ÜÇÜNCÜ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 6220.2,
+      "change_M": -1014.8,
+      "change_pct": -14.0,
+      "investors_now": 4993,
+      "investors_change": 68
+    },
+    {
+      "code": "KZL",
+      "title": "KUVEYT TÜRK PORTFÖY ALTIN KATILIM FONU",
+      "aum_now_M": 68644.3,
+      "change_M": -991.0,
+      "change_pct": -1.4,
+      "investors_now": 59166,
+      "investors_change": -108
+    },
+    {
+      "code": "DL2",
+      "title": "DENİZ PORTFÖY İKİNCİ PARA PİYASASI (TL) FONU",
+      "aum_now_M": 6518.3,
+      "change_M": -711.7,
+      "change_pct": -9.8,
+      "investors_now": 1241,
+      "investors_change": 57
+    }
+  ],
+  "top_investor_increases": [
+    {
+      "code": "GTL",
+      "title": "GARANTİ PORTFÖY BİRİNCİ PARA PİYASASI (TL) FONU",
+      "investors_now": 359152,
+      "change": 364
+    },
+    {
+      "code": "TIV",
+      "title": "İŞ PORTFÖY KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "investors_now": 122682,
+      "change": 286
+    },
+    {
+      "code": "TSI",
+      "title": "İŞ PORTFÖY MAKSİMUM HESAP KISA VADELİ BORÇLANMA ARAÇLARI (TL) FONU",
+      "investors_now": 76124,
+      "change": 188
+    },
+    {
+      "code": "ZBJ",
+      "title": "ZİRAAT PORTFÖY BAŞAK PARA PİYASASI (TL) FONU",
+      "investors_now": 37496,
+      "change": 167
+    },
+    {
+      "code": "YLB",
+      "title": "YAPI KREDİ PORTFÖY PARA PİYASASI FONU",
+      "investors_now": 370971,
+      "change": 141
+    },
+    {
+      "code": "AIS",
+      "title": "AK PORTFÖY PARA PİYASASI KATILIM FONU",
+      "investors_now": 30721,
+      "change": 103
+    },
+    {
+      "code": "BGP",
+      "title": "AK PORTFÖY ÜÇÜNCÜ PARA PİYASASI (TL) FONU",
+      "investors_now": 31751,
+      "change": 102
+    },
+    {
+      "code": "ALE",
+      "title": "AK PORTFÖY PARA PİYASASI (TL) FONU",
+      "investors_now": 144439,
+      "change": 96
+    },
+    {
+      "code": "KTV",
+      "title": "KUVEYT TÜRK PORTFÖY KISA VADELİ KİRA SERTİFİKALARI KATILIM (TL) FONU",
+      "investors_now": 51479,
+      "change": 94
+    },
+    {
+      "code": "GPN",
+      "title": "GARANTİ PORTFÖY PARA PİYASASI KATILIM (TL) FONU",
+      "investors_now": 8976,
+      "change": 84
     }
   ]
 }
